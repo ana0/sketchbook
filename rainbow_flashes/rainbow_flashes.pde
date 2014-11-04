@@ -96,13 +96,15 @@ void draw() {
   bool2 = 0;
   bool3 = 0;
   
-  //iterates variable that swaps colours
-  if(temp == 5) {
-    temp = 0;
-  }
-  else {
+  //iterates variable that swaps colourst
+    if(temp == 5) {
+      temp = 0;
+    }
+    else {
     temp = temp + 1;
-  }
+    }
+
+  
   
   m = master.cycle();
   d = dummy.cycle();

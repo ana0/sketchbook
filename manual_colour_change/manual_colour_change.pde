@@ -2,9 +2,11 @@ int up = 301;
 int down = 299;
 int colour = 255;
 int stroke = 4;
-int bg1 = 0;
-int bg2 = 0;
-int insert = 0;
+int bool1 = 0;
+int bool2 = 0;
+int bool3 = 0;
+int temp = 0;
+
 
 class GradientArray {
   public IntList colourwheel;
@@ -53,25 +55,57 @@ GradientArray dummy = new GradientArray();
 IntList m = master.create();
 IntList d = dummy.create();
 
+//creates list of colours to swap through
+int[] b = { 0, 0, 255 };
+int[] g = { 0, 255, 0 };
+int[] r = { 255, 0, 0 };
+int[] c = { 0, 255, 255 };
+int[] ma = { 255, 0, 255 };
+int[] y = { 255, 255, 0 };
+int[][] colourswap = { r, y, g, c, b, ma };
+
 void setup() {
   background(0, 0, 0);
   size(600, 600);
 }
 
 void draw() {
-  //IntList m = master.create();
   
   //does the actual drawing
   for (int i = 0; i < m.size(); i++) {
-      stroke(d.get(i), d.get(i), d.get(i));
+        if(colourswap[temp][0] == 255) {
+          bool1 = d.get(i);
+        }
+        if(colourswap[temp][1] == 255) {
+          bool2 = d.get(i);
+        }
+        if(colourswap[temp][2] == 255) {
+          bool3 = d.get(i);
+        }   
+      stroke(bool1, bool2, bool3);  
       strokeWeight(stroke);
       noFill();
       quad(300, up, down, 300, 300, down, up, 300);
       up = up + 10;
       down = down - 10;
+      
   }
   up = 301;
   down = 299;
+  bool1 = 0;
+  bool2 = 0;
+  bool3 = 0;
+  
+  //iterates variable that swaps colourst
+  if(d.get(0) == 0) {
+    if(temp == 5) {
+      temp = 0;
+    }
+    else {
+    temp = temp + 1;
+    }
+  }
+  
   
   m = master.cycle();
   d = dummy.cycle();
