@@ -1,6 +1,5 @@
 int up = 301;
 int down = 299;
-int colour = 255;
 int stroke = 4;
 int bool1 = 255;
 int bool2 = 255;
