@@ -26,7 +26,6 @@ void draw() {
     }
     up = 301;
     down = 299;
-    quad(300, up, down, 300, 300, down, up, 300);
   }
 }
 
