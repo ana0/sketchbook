@@ -15,11 +15,11 @@ void setup() {
 
 void draw() {
   if(first) {
-  upwidth = width/2 +1;
-  downwidth = width/2 -1;
-  upheight = displayHeight/2 +1;
-  downheight = displayHeight/2 -1;
-  first = false;
+    upwidth = width/2 +1;
+    downwidth = width/2 -1;
+    upheight = displayHeight/2 +1;
+    downheight = displayHeight/2 -1;
+    first = false;
   }
   
   centrewidth = width/2;
