@@ -335,19 +335,346 @@ void draw() {
   }
   
   if(key=='y') {
+    int[] b = { 0, 0, 255 };
+    int[] g = { 0, 255, 0 };
+    int[] r = { 255, 0, 0 };
+    int[] c = { 0, 255, 255 };
+    int[] ma = { 255, 0, 255 };
+    int[] y = { 255, 255, 0 };
+    int[][] colourswap = { r, y, g, c, b, ma };
+    
+    //does the actual drawing
+    for (int i = 0; i < m.size(); i++) {
+          if(colourswap[temp][0] == 255) {
+            bool1 = d.get(i);
+          }
+          if(colourswap[temp][1] == 255) {
+            bool2 = d.get(i);
+          }
+          if(colourswap[temp][2] == 255) {
+            bool3 = d.get(i);
+          }   
+        stroke(bool1, bool2, bool3);  
+        strokeWeight(stroke);
+        noFill();
+        quad(centrewidth, upheight, downwidth, centreheight, centrewidth, downheight, upwidth, centreheight);
+        upwidth = upwidth + 10;
+        upheight = upheight +10;
+        downheight = downheight - 10;
+        downwidth = downwidth -10;
+    }
+    upwidth = displayWidth/2 +1;
+    downwidth = displayWidth/2 -1;
+    upheight = displayHeight/2 +1;
+    downheight = displayHeight/2 -1;
+    bool1 = 0;
+    bool2 = 0;
+    bool3 = 0;
+    
+    //iterates variable that swaps colourst
+      if(temp >= 5) {
+        temp = 0;
+      }
+      else {
+      temp = temp + 1;
+      }
+  
+    
+    
+    m = master.cycle();
+    d = dummy.cycle();
+    m = master.cyclefirst();
+    
+    if(mousePressed == true) {
+      d.set(0, 0);
+    }
+    else {
+      d.set(0, m.get(0));
+    }
   }
   
   if(key=='u') {
+  int[] b = { 0, 0, 255 };
+  int[] g = { 0, 255, 0 };
+  int[] r = { 255, 0, 0 };
+  int[] c = { 0, 255, 255 };
+  int[] ma = { 255, 0, 255 };
+  int[] y = { 255, 255, 0 };
+  int[][] colourswap = { r, y, g, c, b, ma };
+  
+  //does the actual drawing
+  for (int i = 0; i < m.size(); i++) {
+        if(colourswap[temp][0] == 0) {
+          bool1 = d.get(i);
+        }
+        if(colourswap[temp][1] == 0) {
+          bool2 = d.get(i);
+        }
+        if(colourswap[temp][2] == 0) {
+          bool3 = d.get(i);
+        }   
+      stroke(bool1, bool2, bool3);  
+      strokeWeight(stroke);
+      noFill();
+      quad(centrewidth, upheight, downwidth, centreheight, centrewidth, downheight, upwidth, centreheight);
+      upwidth = upwidth + 10;
+      upheight = upheight +10;
+      downheight = downheight - 10;
+      downwidth = downwidth -10;
+    }
+    upwidth = displayWidth/2 +1;
+    downwidth = displayWidth/2 -1;
+    upheight = displayHeight/2 +1;
+    downheight = displayHeight/2 -1;
+    bool1 = 255;
+    bool2 = 255;
+    bool3 = 255;
+    
+    //iterates variable that swaps colourst
+      if(temp >= 5) {
+        temp = 0;
+      }
+      else {
+      temp = temp + 1;
+      }
+  
+    m = master.cycle();
+    d = dummy.cycle();
+    m = master.cyclefirst();
+    
+    if(mousePressed == true) {
+      d.set(0, 0);
+    }
+    else {
+      d.set(0, m.get(0));
+    }
   }
   
   if(key=='i') {
+    int[] b = { 255, 255, 1 };
+    int[] g = { 255, 1, 255 };
+    int[] r = { 1, 255, 255 };
+    int[] c = { 255, 1, 1 };
+    int[] ma = { 1, 255, 1 };
+    int[] y = { 1, 1, 255 };
+    int[][] colourswap = { r, y, g, c, b, ma };
+    
+    stroke(bool1, bool2, bool3);
+    strokeWeight(stroke);
+    noFill();
+    quad(centrewidth, upheight, downwidth, centreheight, centrewidth, downheight, upwidth, centreheight);
+    if(bool1 == 0) {
+      upwidth = upwidth + 10;
+      upheight = upheight +10;
+      downheight = downheight - 10;
+      downwidth = downwidth -10;
+      temp = temp + 1;
+      stroke = 3;
+      bool1 = colourswap[temp][0]; 
+      bool2 = colourswap[temp][1];
+      bool3 = colourswap[temp][2];
+    }
+    else {
+      bool1 = 0; 
+      bool2 = 0;
+      bool3 = 0;
+      stroke = 4;
+    }
+    
+    if(upwidth > displayWidth*1.5) {
+      upwidth = displayWidth/2 +1;
+      downwidth = displayWidth/2 -1;
+      upheight = displayHeight/2 +1;
+      downheight = displayHeight/2 -1;
+    }
+    
+    if(temp >= 5) {
+      temp = 0;
+    }
   }
   
   if(key=='o') {
+    int[] b = { 255, 255, 1 };
+    int[] g = { 255, 1, 255 };
+    int[] r = { 1, 255, 255 };
+    int[] c = { 255, 1, 1 };
+    int[] ma = { 1, 255, 1 };
+    int[] y = { 1, 1, 255 };
+    int[][] colourswap = { r, y, g, c, b, ma };
+
+    stroke(bool1, bool2, bool3);
+    strokeWeight(stroke);
+    fill(255);
+    quad(centrewidth, upheight, downwidth, centreheight, centrewidth, downheight, upwidth, centreheight);
+    if(bool1 == 0) {
+      upwidth = upwidth + 10;
+      upheight = upheight +10;
+      downheight = downheight - 10;
+      downwidth = downwidth -10;
+      temp = temp + 1;
+      stroke = 3;
+      bool1 = colourswap[temp][0]; 
+      bool2 = colourswap[temp][1];
+      bool3 = colourswap[temp][2];
+    }
+    else {
+      bool1 = 0; 
+      bool2 = 0;
+      bool3 = 0;
+      stroke = 4;
+    }
+    
+    if(upwidth > displayWidth*1.5) {
+      upwidth = displayWidth/2 +1;
+      downwidth = displayWidth/2 -1;
+      upheight = displayHeight/2 +1;
+      downheight = displayHeight/2 -1;
+    }
+    
+    if(temp >= 5) {
+      temp = 0;
+    }
   }
   
   if(key=='p') {
+    int[] b = { 255, 255, 1 };
+    int[] g = { 255, 1, 255 };
+    int[] r = { 1, 255, 255 };
+    int[] c = { 255, 1, 1 };
+    int[] ma = { 1, 255, 1 };
+    int[] y = { 1, 1, 255 };
+    int[][] colourswap = { r, y, g, c, b, ma };
+
+    stroke(bool1, bool2, bool3);
+    strokeWeight(stroke);
+    fill(0);
+    quad(centrewidth, upheight, downwidth, centreheight, centrewidth, downheight, upwidth, centreheight);
+    if(bool1 == 0) {
+      upwidth = upwidth + 10;
+      upheight = upheight +10;
+      downheight = downheight - 10;
+      downwidth = downwidth -10;
+      temp = temp + 1;
+      stroke = 3;
+      bool1 = colourswap[temp][0]; 
+      bool2 = colourswap[temp][1];
+      bool3 = colourswap[temp][2];
+    }
+    else {
+      bool1 = 0; 
+      bool2 = 0;
+      bool3 = 0;
+      stroke = 4;
+    }
+    
+    if(upwidth > displayWidth*1.5) {
+      upwidth = displayWidth/2 +1;
+      downwidth = displayWidth/2 -1;
+      upheight = displayHeight/2 +1;
+      downheight = displayHeight/2 -1;
+    }
+    
+    if(temp >= 5) {
+      temp = 0;
+    }
   }
+  
+  if(key=='a') {
+    int[] b = { 255, 255, 1 };
+    int[] g = { 255, 1, 255 };
+    int[] r = { 1, 255, 255 };
+    int[] c = { 255, 1, 1 };
+    int[] ma = { 1, 255, 1 };
+    int[] y = { 1, 1, 255 };
+    int[][] colourswap = { r, y, g, c, b, ma };
+    
+    stroke(bool1, bool2, bool3);
+    strokeWeight(stroke);
+    noFill();
+    quad(centrewidth, upheight, downwidth, centreheight, centrewidth, downheight, upwidth, centreheight);
+    upwidth = upwidth + 10;
+    upheight = upheight +10;
+    downheight = downheight - 10;
+    downwidth = downwidth -10;
+    temp = temp + 1;
+  
+    if(upwidth >= displayWidth*1.5) {
+      if(bool1 == 0) {
+        stroke = 3;
+      }
+      else {
+        stroke = 4;
+      }
+      upwidth = displayWidth/2 +1;
+      downwidth = displayWidth/2 -1;
+      upheight = displayHeight/2 +1;
+      downheight = displayHeight/2 -1;
+    }
+    
+    if(stroke == 3) {
+        bool1 = colourswap[temp][0]; 
+        bool2 = colourswap[temp][1];
+        bool3 = colourswap[temp][2];
+    }
+    else {
+        bool1 = 0; 
+        bool2 = 0;
+        bool3 = 0;
+    }
+    
+    if(temp >= 5) {
+      temp = 0;
+    }
+  }
+  
+  if(key=='s') {
+    int[] b = { 255, 255, 1 };
+    int[] g = { 255, 1, 255 };
+    int[] r = { 1, 255, 255 };
+    int[] c = { 255, 1, 1 };
+    int[] ma = { 1, 255, 1 };
+    int[] y = { 1, 1, 255 };
+    int[][] colourswap = { r, y, g, c, b, ma };
+    
+    stroke(bool1, bool2, bool3);
+    strokeWeight(stroke);
+    fill(bool1, bool2, bool3);
+    quad(centrewidth, upheight, downwidth, centreheight, centrewidth, downheight, upwidth, centreheight);
+    upwidth = upwidth + 10;
+    upheight = upheight +10;
+    downheight = downheight - 10;
+    downwidth = downwidth -10;
+    temp = temp + 1;
+  
+    if(upwidth >= displayWidth*1.6) {
+      if(bool1 == 0) {
+        stroke = 3;
+      }
+      else {
+        stroke = 4;
+      }
+      upwidth = displayWidth/2 +1;
+      downwidth = displayWidth/2 -1;
+      upheight = displayHeight/2 +1;
+      downheight = displayHeight/2 -1;
+    }
+    
+    if(stroke == 3) {
+        bool1 = colourswap[temp][0]; 
+        bool2 = colourswap[temp][1];
+        bool3 = colourswap[temp][2];
+    }
+    else {
+        bool1 = 0; 
+        bool2 = 0;
+        bool3 = 0;
+    }
+    
+    if(temp >= 5) {
+      temp = 0;
+    }
+  }
+ 
   
 
 }
