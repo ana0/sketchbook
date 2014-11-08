@@ -674,6 +674,111 @@ void draw() {
       temp = 0;
     }
   }
+  
+  if(key=='d') {
+    int[] b = { 255, 0, 1 };
+    int[] g = { 0, 1, 255 };
+    int[] r = { 1, 255, 0 };
+    int[] c = { 0, 255, 1 };
+    int[] ma = { 255, 1, 0 };
+    int[] y = { 1, 0, 255 };
+    int[][] colourswap = { r, y, g, c, b, ma };
+    
+    //does the actual drawing
+    for (int i = 0; i < m.size(); i++) {
+          if(colourswap[temp][0] == 1) {
+            bool1 = d.get(i);
+          }
+          if(colourswap[temp][1] == 1) {
+            bool2 = d.get(i);
+          }
+          if(colourswap[temp][2] == 1) {
+            bool3 = d.get(i);
+          } 
+        stroke(bool1, bool2, bool3);  
+        strokeWeight(stroke);
+        noFill();
+        quad(centrewidth, upheight, downwidth, centreheight, centrewidth, downheight, upwidth, centreheight);
+        upwidth = upwidth + 10;
+        upheight = upheight +10;
+        downheight = downheight - 10;
+        downwidth = downwidth -10;
+        
+    }
+    upwidth = displayWidth/2 +1;
+    downwidth = displayWidth/2 -1;
+    upheight = displayHeight/2 +1;
+    downheight = displayHeight/2 -1;
+    bool1 = colourswap[temp][0];
+    bool2 = colourswap[temp][1];
+    bool3 = colourswap[temp][2];
+    
+    //iterates variable that swaps colourst
+    if(d.get(0) == 0) {
+      if(temp >= 5) {
+        temp = 0;
+      }
+      else {
+      temp = temp + 1;
+      }
+    }
+    
+    
+    m = master.cycle();
+    d = dummy.cycle();
+    m = master.cyclefirst();
+    
+    if(mousePressed == true) {
+      d.set(0, 255);
+    }
+    else {
+      d.set(0, m.get(0));
+    }
+  }
+  
+  if(key=='f') {
+    int[] b = { 255, 255, 1 };
+    int[] g = { 255, 1, 255 };
+    int[] r = { 1, 255, 255 };
+    int[] c = { 255, 1, 1 };
+    int[] ma = { 1, 255, 1 };
+    int[] y = { 1, 1, 255 };
+    int[][] colourswap = { r, y, g, c, b, ma };
+    
+    stroke(bool1, bool2, bool3);
+    strokeWeight(stroke);
+    noFill();
+    if(upwidth <= displayWidth*1.5) {
+      quad(centrewidth, upheight, downwidth, centreheight, centrewidth, downheight, upwidth, centreheight);
+      upwidth = upwidth + 10;
+      upheight = upheight +10;
+      downheight = downheight - 10;
+      downwidth = downwidth -10;
+      temp = temp + 1;
+      bool1 = colourswap[temp][0]; 
+      bool2 = colourswap[temp][1];
+      bool3 = colourswap[temp][2];
+    }
+    else {
+        upwidth = displayWidth/2 +1;
+        downwidth = displayWidth/2 -1;
+        upheight = displayHeight/2 +1;
+        downheight = displayHeight/2 -1;
+        quad(centrewidth, upheight, downwidth, centreheight, centrewidth, downheight, upwidth, centreheight);
+        upwidth = upwidth + 10;
+        upheight = upheight +10;
+        downheight = downheight - 10;
+        downwidth = downwidth -10;
+    }
+  
+   if(temp >= 5) {
+     temp = 0;
+   }
+  }
+  
+  if(key=='g') {
+  }
+  
  
   
 
