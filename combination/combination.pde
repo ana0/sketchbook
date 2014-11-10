@@ -60,6 +60,13 @@ GradientArray dummy = new GradientArray();
 IntList m = master.create();
 IntList d = dummy.create();
 
+GradientArray red = new GradientArray();
+GradientArray green = new GradientArray();
+GradientArray blue = new GradientArray();
+IntList re = red.create();
+IntList gr = green.create();
+IntList bl = blue.create();
+
 //creates list of colours to swap through
 int[] b = { 0, 0, 255 };
 int[] g = { 0, 255, 0 };
@@ -79,6 +86,17 @@ void setup() {
 }
 
 void draw() {
+  if(first) {
+    upwidth = width/2 +1;
+    downwidth = width/2 -1;
+    upheight = displayHeight/2 +1;
+    downheight = displayHeight/2 -1;
+    first = false;
+  }
+  
+  centrewidth = width/2;
+  centreheight = height/2;
+  
   if(key=='z') {
     quad(0, 0, displayWidth, 0, displayWidth, displayHeight, 0, displayHeight);
     fill(0);
@@ -86,17 +104,6 @@ void draw() {
   }
   
   if(key=='q') {
-    if(first) {
-      upwidth = width/2 +1;
-      downwidth = width/2 -1;
-      upheight = displayHeight/2 +1;
-      downheight = displayHeight/2 -1;
-      first = false;
-    }
-    
-    centrewidth = width/2;
-    centreheight = height/2;
-    
     stroke(colour, colour, colour);
     strokeWeight(stroke);
     noFill();
@@ -777,9 +784,110 @@ void draw() {
   }
   
   if(key=='g') {
+    int[] b = { 0, 0, 255 };
+    int[] g = { 0, 255, 0 };
+    int[] r = { 255, 0, 0 };
+    int[] c = { 0, 255, 255 };
+    int[] ma = { 255, 0, 255 };
+    int[] y = { 255, 255, 0 };
+    int[][] colourswap = { r, y, g, c, b, ma };
+    
+    //does the actual drawing
+    for (int i = 0; i < m.size(); i++) {
+          if(colourswap[temp][0] == 255) {
+            bool1 = d.get(i);
+          }
+          if(colourswap[temp][1] == 255) {
+            bool2 = d.get(i);
+          }
+          if(colourswap[temp][2] == 255) {
+            bool3 = d.get(i);
+          }   
+        if(mousePressed == true) {
+          stroke(0, 0, 0);
+        }
+        else {
+          stroke(bool1, bool2, bool3);  
+        }
+        strokeWeight(stroke);
+        noFill();
+        quad(centrewidth, upheight, downwidth, centreheight, centrewidth, downheight, upwidth, centreheight);
+        upwidth = upwidth + 10;
+        upheight = upheight +10;
+        downheight = downheight - 10;
+        downwidth = downwidth -10;
+    }
+    upwidth = displayWidth/2 +1;
+    downwidth = displayWidth/2 -1;
+    upheight = displayHeight/2 +1;
+    downheight = displayHeight/2 -1;
+    bool1 = 0;
+    bool2 = 0;
+    bool3 = 0;
+    
+    //iterates variable that swaps colourst
+      if(temp == 5) {
+        temp = 0;
+      }
+      else {
+      temp = temp + 1;
+      }
+  
+    
+    
+    m = master.cycle();
+    d = dummy.cycle();
+    m = master.cyclefirst();
+    d = dummy.cyclefirst();  
   }
   
- 
+ if(key=='h') {
+   //does the actual drawing
+  for (int i = 0; i < re.size(); i++) {
+      bool1 = re.get(i);
+      bool2 = gr.get(i);
+      bool3 = bl.get(i);
+      if(mousePressed == true) {
+        stroke(0, 0, 0);
+      }
+      else {
+        stroke(bool1, bool2, bool3);  
+      }
+      strokeWeight(stroke);
+      noFill();
+      quad(centrewidth, upheight, downwidth, centreheight, centrewidth, downheight, upwidth, centreheight);
+      upwidth = upwidth + 10;
+      upheight = upheight +10;
+      downheight = downheight - 10;
+      downwidth = downwidth -10;
+  }
+  upwidth = displayWidth/2 +1;
+  downwidth = displayWidth/2 -1;
+  upheight = displayHeight/2 +1;
+  downheight = displayHeight/2 -1;
+//  bool1 = 0;
+//  bool2 = 0;
+//  bool3 = 0;
+  
+  //iterates variable that swaps colourst
+    if(temp == 5) {
+      temp = 0;
+    }
+    else {
+    temp = temp + 1;
+    }
+
+  re = red.cycle();
+  re = red.cyclefirst();
+  for(int i=0; i<5; i++) {
+    gr = green.cycle();
+    gr = green.cyclefirst();
+  }
+  for(int i=0; i<10; i++) {
+    bl = blue.cycle();
+    bl = blue.cyclefirst();
+  }
+ }
   
 
 }
