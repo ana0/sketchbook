@@ -86,6 +86,17 @@ void setup() {
 }
 
 void draw() {
+  if(first) {
+    upwidth = width/2 +1;
+    downwidth = width/2 -1;
+    upheight = displayHeight/2 +1;
+    downheight = displayHeight/2 -1;
+    first = false;
+  }
+  
+  centrewidth = width/2;
+  centreheight = height/2;
+  
   if(key=='z') {
     quad(0, 0, displayWidth, 0, displayWidth, displayHeight, 0, displayHeight);
     fill(0);
@@ -93,17 +104,6 @@ void draw() {
   }
   
   if(key=='q') {
-    if(first) {
-      upwidth = width/2 +1;
-      downwidth = width/2 -1;
-      upheight = displayHeight/2 +1;
-      downheight = displayHeight/2 -1;
-      first = false;
-    }
-    
-    centrewidth = width/2;
-    centreheight = height/2;
-    
     stroke(colour, colour, colour);
     strokeWeight(stroke);
     noFill();
