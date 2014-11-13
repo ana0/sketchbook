@@ -11,7 +11,7 @@ int bool2 = 0;
 int bool3 = 0;
 int temp = 0;
 boolean first = true;
-IntList colourwheel;
+//IntList colourwheel;
 
 class GradientArray {
   public IntList colourwheel;
@@ -132,7 +132,7 @@ void draw() {
     stroke = 4;
 
     //does the actual drawing
-    for (int i = 0; i < colourwheel.size(); i++) {
+    for (int i = 0; i < d.size(); i++) {
         if (mousePressed == true) {
           stroke(0, 0, 0);
         }
