@@ -2,6 +2,7 @@ float diameter;
 float margin;
 float radius;
 int iter = 2;
+float times = 1;
 boolean first = true;
 
 void setup() {
@@ -14,24 +15,30 @@ void draw() {
   if(first) {
     diameter = min(height, width)/iter;
   }
-//  else {
-//    diameter = diameter/iter;
-//  }
-    
-  margin = diameter/20;
-  radius = diameter-(margin*iter);
+  else {
+    diameter = diameter/2;
+  }
   
-  //print(radius);
+  margin = diameter/20;
+  radius = diameter-(margin*2);
+  
+  times = width/diameter+1;
   
   lights();
-  translate(width/iter, height/iter, -50);
-  sphere(radius);
+  //translate(width/iter, height/iter, -50);
+  //sphere(radius);
+  //if(times > 1) {
+    for(int i = 0; i < times; i++) {
+      translate(width/iter, height/iter, 0);
+      sphere(radius);
+    }
+  //}
   
   iter = iter*iter;
-  print(iter);
+  print(diameter);
   //noLoop();
 
-  if(diameter/iter < 1) {
-    iter = 2;
-  }
+//  if(diameter/iter < 0.1) {
+//    iter = 2;
+//  }
 }
