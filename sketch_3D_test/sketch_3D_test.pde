@@ -19,6 +19,10 @@ void draw() {
     diameter = diameter/2;
   }
   
+  fill(0);
+  quad(0, 0, width, 0, width, height, 0, height);
+  fill(255);
+  noStroke();
   margin = diameter/20;
   radius = diameter-(margin*2);
   
@@ -28,13 +32,18 @@ void draw() {
   //translate(width/iter, height/iter, -50);
   //sphere(radius);
   //if(times > 1) {
-    for(int i = 0; i < times; i++) {
-      translate(width/iter, height/iter, 0);
+  for(int x = 1; x < iter*2; x = x + 2) {
+    //translate(0, diameter, 0);
+    for(int y = 1; y < iter*2; y = y + 2) {
+      translate(diameter*x, diameter*y, 0);
       sphere(radius);
+      translate(-diameter*x, -diameter*y, 0);
+      //translate(0, 0, 0);
     }
+  }
   //}
   
-  iter = iter*iter;
+  iter = iter*2;
   print(diameter);
   //noLoop();
 
