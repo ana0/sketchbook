@@ -2,7 +2,7 @@ float diameter;
 float margin;
 float radius;
 int iter = 2;
-//float times = 1;
+float times = 1;
 boolean first = true;
 
 void setup() {
